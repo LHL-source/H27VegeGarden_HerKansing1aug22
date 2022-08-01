@@ -60,7 +60,18 @@ const getYieldForCrop = (input, factor) => {
     const yieldPerCrop = yieldPerPlant * input.numCrops;
     return parseFloat(yieldPerCrop.toFixed(2));
 };
+//end getYieldForCrop
 
+//start getTotalYield W? on 1 aug22 yes good job/
+const getTotalYield = (input, factor) => {
+    //console.log("getTotalYieldinput, factor: ", input, factor);
+    const yieldPerCrop = input.crops.map((crop) =>
+        getYieldForCrop(crop, factor));
+
+    const totalYield = yieldPerCrop.reduce((acc, cur) => acc + cur);
+    return parseFloat(totalYield.toFixed(2));
+
+}; //geTotalYield
 
 
 
@@ -70,5 +81,6 @@ const getYieldForCrop = (input, factor) => {
 module.exports = {
     getYieldForPlant,
     getYieldForCrop,
+    getTotalYield
 
 };
