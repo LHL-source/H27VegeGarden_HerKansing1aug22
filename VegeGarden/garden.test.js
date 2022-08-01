@@ -1,7 +1,7 @@
 const {
     getYieldForPlant,
     getYieldForCrop,
-
+    getTotalYield,
 
 } = require("./garden");
 
@@ -71,3 +71,53 @@ describe("testing getYieldForCrop", () => {
 
     }); /*test*/
 }); /*des*/
+// end getYieldForCrop
+//start getTotalYield
+
+describe("get total yield with multiple crops", () => {
+
+    test("total yield with multiple crops", () => {
+        const crops = [
+            { crop: corn, numCrops: 9 },
+            { crop: pumpkin, numCrops: 2 },
+        ];
+        expect(getTotalYield({ crops })).toBe(278);
+    }); //test
+
+    test("total yield with numCrops is 0 amount", () => {
+        const crops = [
+            { crop: corn, numCrops: 0 },
+
+        ];
+        expect(getTotalYield({ crops })).toBe(0);
+    }); //test
+
+    test("total yield with multiple crops en 1 factor sun high", () => {
+        const environmentFactors = {
+            sun: "high",
+        };
+        const crops = [
+            { crop: corn, numCrops: 5 },
+            { crop: pumpkin, numCrops: 3 },
+        ];
+
+
+        expect(getTotalYield({ crops }, environmentFactors)).toBe(243.00);
+    }); //test
+
+    test("total yield with multiple crops en 1 factor sun high", () => {
+        const environmentFactors = {
+            sun: "high",
+            wind: "medium"
+        };
+        const crops = [
+            { crop: corn, numCrops: 5 },
+            { crop: pumpkin, numCrops: 3 },
+        ];
+
+
+        expect(getTotalYield({ crops }, environmentFactors)).toBe(170.10);
+    }); //test
+
+
+});
