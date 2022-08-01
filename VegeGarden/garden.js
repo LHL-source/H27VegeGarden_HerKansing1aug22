@@ -6,6 +6,7 @@ const getYieldForPlant = (input, factor) => {
 
     //add only the effect of sun
     let sun;
+    let wind;
     if (!input.factors.sun) {
         sun = 1;
     } /*!input.factors.sun*/
@@ -35,7 +36,7 @@ const getYieldForPlant = (input, factor) => {
                 wind = (100 + input.factors.wind.low) / 100;
                 break;
             case "medium":
-                wind = (100 + input.factors.wind.medium / 100);
+                wind = (100 + input.factors.wind.medium) / 100;
                 break;
             case "high":
                 wind = (100 + input.factors.wind.high) / 100;
@@ -53,11 +54,21 @@ const getYieldForPlant = (input, factor) => {
 }; //const getYieldForPlant
 //end getYieldForPlant-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
+//start getYieldForCrop W? yes 1 aug 22 good job-----------------------------------------
+const getYieldForCrop = (input, factor) => {
+    const yieldPerPlant = getYieldForPlant(input.crop, factor);
+    const yieldPerCrop = yieldPerPlant * input.numCrops;
+    return parseFloat(yieldPerCrop.toFixed(2));
+};
+
+
+
 
 
 
 
 module.exports = {
     getYieldForPlant,
+    getYieldForCrop,
 
 };

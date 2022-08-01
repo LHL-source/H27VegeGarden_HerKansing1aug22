@@ -1,5 +1,7 @@
 const {
     getYieldForPlant,
+    getYieldForCrop,
+
 
 } = require("./garden");
 
@@ -30,7 +32,7 @@ describe("getYieldForPlant No Environment factors ", () => {
         expect(getYieldForPlant(corn, environmentFactors)).toBe(45);
     }); //test
 
-    //test with 2 factors: sun medium and wind high
+    //test with 2 factors: sun medium and wind high w? yes 1 aug very good job
     test("getYieldForPlant with 2 factors sun medium and wind high", () => {
         const environmentFactors = {
             sun: "medium",
@@ -41,4 +43,31 @@ describe("getYieldForPlant No Environment factors ", () => {
     }); /*test*/
 
 }); //desc
+
 //end getYieldForplant--------------------------------------------
+
+//start getYieldForCrop--------------------------------------------
+describe("testing getYieldForCrop", () => {
+    test("Get yield for crop simple", () => {
+        const input = {
+            crop: corn,
+            numCrops: 4,
+        } /*const*/
+        expect(getYieldForCrop(input)).toBe(120.00);
+
+    }); /*test*/
+
+    test("Get yield for crop sun low , wind medium", () => {
+        const environmentFactors = {
+            sun: "low",
+            wind: "medium",
+        };
+
+        const crops = {
+            crop: pumpkin,
+            numCrops: 8,
+        } /*const*/
+        expect(getYieldForCrop(crops, environmentFactors)).toBe(17.92);
+
+    }); /*test*/
+}); /*des*/
