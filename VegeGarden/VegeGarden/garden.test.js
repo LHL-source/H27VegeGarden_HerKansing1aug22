@@ -2,6 +2,7 @@ const {
     getYieldForPlant,
     getYieldForCrop,
     getTotalYield,
+    getRevenueForCrop,
 
 } = require("./garden");
 
@@ -118,6 +119,18 @@ describe("get total yield with multiple crops", () => {
 
         expect(getTotalYield({ crops }, environmentFactors)).toBe(170.10);
     }); //test
+
+});
+//end totalYieldForCrops
+//start getRevenueForCrop
+describe("get revenue for crops", () => {
+    test('get revenue for crop no factor', () => {
+        const crops = {
+            crop: corn,
+            numCrops: 7,
+        };
+    }); //test
+    expect(getRevenueForCrop(crops)).toBe(420.00);
 
 
 });
