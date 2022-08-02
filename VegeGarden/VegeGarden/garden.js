@@ -72,15 +72,25 @@ const getTotalYield = (input, factor) => {
     return parseFloat(totalYield.toFixed(2));
 
 }; //geTotalYield
+//end getTotalYield
+//start getRevenueForCrop
+const getRevenueForCrop = (input, factor) => {
+    console.log("getRevenueForCrop:", input, factor);
+    console.log("salePrise: ", input.crop.salePrice);
+    console.log("getYieldForPlant input.crop: ", input.crop);
+    console.log("getYieldForPlant, factor: ", factor);
 
-
-
+    const revenueForOnePlant = input.crop.salePrice * getYieldForPlant(input.crop, factor);
+    const revenueForCrop = revenueForOnePlant * input.numCrops;
+    return revenueForCrop;
+};
 
 
 
 module.exports = {
     getYieldForPlant,
     getYieldForCrop,
-    getTotalYield
+    getTotalYield,
+    getRevenueForCrop
 
 };

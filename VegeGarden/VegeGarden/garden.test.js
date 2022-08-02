@@ -127,10 +127,11 @@ describe("get revenue for crops", () => {
     test('get revenue for crop no factor', () => {
         const crops = {
             crop: corn,
-            numCrops: 7,
+            numCrops: 7
         };
+
+        expect(getRevenueForCrop(crops)).toBe(420.00);
     }); //test
-    expect(getRevenueForCrop(crops)).toBe(420.00);
 
 
-});
+}); /*de*/
