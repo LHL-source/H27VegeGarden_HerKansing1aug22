@@ -92,18 +92,20 @@ const getCostForCrop = (input) => {
 //end getCostForCrop
 //start getProfitForCrop w? yes 2-8 good job
 const getProfitForCrop = (input, factor) => {
-    console.log("getProfitForCrop", input, factor)
+    console.log("getProfitForCrop_1", input, factor)
     const profitForCrop = getRevenueForCrop(input, factor) - getCostForCrop(input);
     console.log("profit for a crop:", profitForCrop);
     return parseFloat(profitForCrop.toFixed(2));
 
 }; //const
 
-//start getTotalProfit w? not yet
+//start getTotalProfit w? yes very good job 3 aug
 const getTotalProfit = (input, factor) => {
+    console.log("getTotalProfit before .map, input and factor:", input, factor);
+
     const profitPerCrop = input.map((crop) => getProfitForCrop(crop, factor));
-    console.log(".map crop:", crop);
-    console.log("getProfitForCrop(crop, factor):", getProfitForCrop);
+    // console.log(".map crop en factor:", crop, factor);
+    console.log("getProfitForCrop_2(crop, factor):", getProfitForCrop);
     console.log("profitPerCrop:", profitPerCrop);
 
     const totalProfit = profitPerCrop.reduce((acc, cur) => acc + cur);
