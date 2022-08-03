@@ -3,6 +3,9 @@ const {
     getYieldForCrop,
     getTotalYield,
     getRevenueForCrop,
+    getCostForCrop,
+    getProfitForCrop,
+    getTotalProfit
 
 } = require("./garden");
 
@@ -124,14 +127,63 @@ describe("get total yield with multiple crops", () => {
 //end totalYieldForCrops
 //start getRevenueForCrop
 describe("get revenue for crops", () => {
-    test('get revenue for crop no factor', () => {
-        const crops = {
-            crop: corn,
-            numCrops: 7
+    test('get revenue for crop factor sun high', () => {
+        const environmentFactors = {
+            sun: "high",
         };
 
-        expect(getRevenueForCrop(crops)).toBe(420.00);
+        const crops = {
+            crop: corn,
+            numCrops: 7,
+        };
+
+        expect(getRevenueForCrop(crops, environmentFactors)).toBe(630.00);
     }); //test
 
 
 }); /*de*/
+//end getRevenueForCrop
+//start  getCostForCrop
+describe("get revenue for crop", () => {
+    test("test costs for crop", () => {
+            const crops = {
+                numCrops: 11,
+            };
+            expect(getCostForCrop(crops)).toBe(11.00);
+
+        }) //test
+
+});
+//end getCostForCrop
+//start getProfitForCrop
+describe("get profit for crop sun low, wind medium", () => {
+    test("test get profit for crop sun low , wind medium", () => {
+        const crops = {
+            crop: pumpkin,
+            numCrops: 13,
+        };
+        const environmentFactors = {
+            sun: "low",
+            wind: "medium",
+        };
+        expect(getProfitForCrop(crops, environmentFactors)).toBe(74.36);
+
+    }); //test
+});
+//end getProfitForCrop
+//start getTotalProfit 
+describe("get total profit", () => {
+    test("get total profit for multiple crops with sun low, wind medium", () => {
+        const crops = [
+            { crop: corn, numCrops: 4 },
+            { crop: pumpkin, numCrops: 13 },
+        ];
+
+        const environmentFactors = {
+            sun: "low",
+            wind: "medium",
+        };
+        expect(getTotalProfit(crops, environmentFactors)).toBe(208.76);
+    }); //test
+
+});
